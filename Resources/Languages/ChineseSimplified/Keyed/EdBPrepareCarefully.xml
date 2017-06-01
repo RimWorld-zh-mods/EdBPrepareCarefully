@@ -1,4 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- CHANGE NOTES -->
+<!-- v0.17.1.3 -->
+<!-- NEW: EdB.PC.Dialog.Preset.Error.EquipmentFailed -->
+<!-- NEW: EdB.PC.Dialog.Preset.Error.PartialSaveFailure -->
+<!-- NEW: EdB.PC.Dialog.Preset.Error.SaveFailed -->
+<!-- UPDATED: EdB.PC.Panel.RelationshipsParentChild.Title -->
+
+<!-- v0.17.1.4 -->
+<!-- NEW: EdB.PC.Common.Default -->
+<!-- NEW: EdB.PC.Common.NoOptionAvailable -->
+<!-- NEW: EdB.PC.Dialog.Preset.Error.NoCharacter -->
+<!-- NEW: EdB.PC.Page.StartingPawnScenarioPartMessage.Plural -->
+<!-- NEW: EdB.PC.Page.StartingPawnScenarioPartMessage.Singular -->
+
 <LanguageData>
   <EdB.PC.AddParentChild.Header.AddParent>添加一个父亲或母亲</EdB.PC.AddParentChild.Header.AddParent>
   <EdB.PC.AddParentChild.Error.ParentRequired>你必须选择一个亲属。</EdB.PC.AddParentChild.Error.ParentRequired>
@@ -24,9 +38,11 @@
   <EdB.PC.Common.Add>新增</EdB.PC.Common.Add>
   <EdB.PC.Common.Next>下一步</EdB.PC.Common.Next>
   <EdB.PC.Common.NoOptionSelected>无</EdB.PC.Common.NoOptionSelected>
+  <EdB.PC.Common.NoOptionAvailable>无</EdB.PC.Common.NoOptionAvailable>
   <EdB.PC.Common.Cancel>取消</EdB.PC.Common.Cancel>
   <EdB.PC.Common.Close>关闭</EdB.PC.Common.Close>
   <EdB.PC.Common.Confirm>确认</EdB.PC.Common.Confirm>
+  <EdB.PC.Common.Default>默认</EdB.PC.Common.Default>
 
   <EdB.PC.Dialog.BodyPart.Header>选择位置</EdB.PC.Dialog.BodyPart.Header>
   <EdB.PC.Dialog.BodyPart.Error.Required>你必须选择一个位置</EdB.PC.Dialog.BodyPart.Error.Required>
@@ -50,10 +66,14 @@
   <EdB.PC.Dialog.Preset.Button.Save>保存预设</EdB.PC.Dialog.Preset.Button.Save>
   <EdB.PC.Dialog.Preset.ConfirmDelete>你确定想要删除这个预设吗？</EdB.PC.Dialog.Preset.ConfirmDelete>
   <EdB.PC.Dialog.Preset.DeleteTooltip>删除这个预设</EdB.PC.Dialog.Preset.DeleteTooltip>
+  <EdB.PC.Dialog.Preset.Error.EquipmentFailed>无法从预设中载入装备。</EdB.PC.Dialog.Preset.Error.EquipmentFailed>
   <EdB.PC.Dialog.Preset.Error.Failed>从预设方案中载入角色失败。请检查是否启用所有需要的mod。</EdB.PC.Dialog.Preset.Error.Failed>
+  <EdB.PC.Dialog.Preset.Error.PartialSaveFailure>保存预设时遇到问题。一些自定义内容未被包含。</EdB.PC.Dialog.Preset.Error.PartialSaveFailure>
   <EdB.PC.Dialog.Preset.Error.PreAlpha13NotSupported>不支持在A13版本之前保存的预设。</EdB.PC.Dialog.Preset.Error.PreAlpha13NotSupported>
   <EdB.PC.Dialog.Preset.Error.RelationshipFailed>无法从预设中加载自定义关系。</EdB.PC.Dialog.Preset.Error.RelationshipFailed>
-  <EdB.PC.Dialog.Preset.Error.ThingDefFailed>无法完全载入预设。请检查是否启用所有需要的mod。</EdB.PC.Dialog.Preset.Error.ThingDefFailed>
+  <EdB.PC.Dialog.Preset.Error.SaveFailed>保存时遇到问题。你可能无法载入此预设。</EdB.PC.Dialog.Preset.Error.SaveFailed>
+  <EdB.PC.Dialog.Preset.Error.ThingDefFailed>无法完全载入预设。请检查是否已启用所有需要的mod。</EdB.PC.Dialog.Preset.Error.ThingDefFailed>
+  <EdB.PC.Dialog.Preset.Error.NoCharacter>无法载入保存的角色。请检查是否已启用所有需要的mod。</EdB.PC.Dialog.Preset.Error.NoCharacter>
   <EdB.PC.Dialog.Preset.Loaded>已载入预设{0}</EdB.PC.Dialog.Preset.Loaded>
 
   <EdB.PC.Dialog.Severity.Header>选择一个严重等级</EdB.PC.Dialog.Severity.Header>
@@ -126,6 +146,8 @@
     禁用点数限制来进行无限制的开局准备。
   </EdB.PC.Page.Points.UsePoints.Tip>
   <EdB.PC.Page.Title>精心准备</EdB.PC.Page.Title>
+  <EdB.PC.Page.StartingPawnScenarioPartMessage.Plural>使用{0}位精心准备角色开始。</EdB.PC.Page.StartingPawnScenarioPartMessage.Plural>
+  <EdB.PC.Page.StartingPawnScenarioPartMessage.Singular>使用1位精心准备角色开始。</EdB.PC.Page.StartingPawnScenarioPartMessage.Singular>
 
   <EdB.PC.Panel.Age.Biological>生理年龄</EdB.PC.Panel.Age.Biological>
   <EdB.PC.Panel.Age.Chronological>实际年龄</EdB.PC.Panel.Age.Chronological>
@@ -171,10 +193,11 @@
   <EdB.PC.Panel.PawnList.Delete.Confirm>你确定要删除这个角色吗？</EdB.PC.Panel.PawnList.Delete.Confirm>
   <EdB.PC.Panel.PawnList.Error.MustSelectFaction>必须选择一个派系</EdB.PC.Panel.PawnList.Error.MustSelectFaction>
   <EdB.PC.Panel.PawnList.SelectFaction>选择一个派系</EdB.PC.Panel.PawnList.SelectFaction>
+  <EdB.PC.Panel.PawnList.Error.FactionPawnFailed>尝试创建新角色时遇到意外的错误。</EdB.PC.Panel.PawnList.Error.FactionPawnFailed>
 
   <EdB.PC.Panel.RelationshipsOther.Title>其他关系</EdB.PC.Panel.RelationshipsOther.Title>
 
-  <EdB.PC.Panel.RelationshipsParentChild.Title>亲属关系</EdB.PC.Panel.RelationshipsParentChild.Title>
+  <EdB.PC.Panel.RelationshipsParentChild.Title>亲子，以及兄弟姐妹关系</EdB.PC.Panel.RelationshipsParentChild.Title>
 
   <EdB.PC.Panel.SelectedEquipment.Remove>移除物资</EdB.PC.Panel.SelectedEquipment.Remove>
 
