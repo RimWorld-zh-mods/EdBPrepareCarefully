@@ -8,7 +8,9 @@ using Verse;
 namespace EdB.PrepareCarefully {
     public class ControllerPawns {
         public delegate void PawnAddedHandler(CustomPawn pawn);
+        public delegate void PawnReplacedHandler(CustomPawn pawn);
         public event PawnAddedHandler PawnAdded;
+        public event PawnReplacedHandler PawnReplaced;
 
         private State state;
         private Randomizer randomizer = new Randomizer();
@@ -20,7 +22,10 @@ namespace EdB.PrepareCarefully {
         }
 
         public void RandomizeAll() {
-            randomizer.RandomizeAll(state.CurrentPawn);
+            Pawn pawn = randomizer.GenerateSameKindOfPawn(state.CurrentPawn);
+            state.CurrentPawn.InitializeWithPawn(pawn);
+            state.CurrentPawn.GenerateId();
+            PawnReplaced(state.CurrentPawn);
         }
 
         // Name-related actions.
@@ -40,7 +45,10 @@ namespace EdB.PrepareCarefully {
             }
         }
         public void RandomizeName() {
-            randomizer.RandomizeName(state.CurrentPawn);
+            Pawn sourcePawn = randomizer.GenerateSameKindAndGenderOfPawn(state.CurrentPawn);
+            Name name = PawnBioAndNameGenerator.GeneratePawnName(sourcePawn, NameStyle.Full, null);
+            NameTriple nameTriple = name as NameTriple;
+            state.CurrentPawn.Name = nameTriple;
         }
 
         // Backstory-related actions.
@@ -52,32 +60,55 @@ namespace EdB.PrepareCarefully {
                 state.CurrentPawn.Adulthood = backstory;
             }
         }
+
         public void RandomizeBackstories() {
-            randomizer.RandomizeBackstory(state.CurrentPawn);
+            CustomPawn currentPawn = state.CurrentPawn;
+            PawnKindDef kindDef = currentPawn.Pawn.kindDef;
+            FactionDef factionDef = kindDef.defaultFactionType;
+            if (factionDef == null) {
+                factionDef = Faction.OfPlayer.def;
+            }
+            MethodInfo method = typeof(PawnBioAndNameGenerator).GetMethod("SetBackstoryInSlot", BindingFlags.Static | BindingFlags.NonPublic);
+            object[] arguments = new object[] { currentPawn.Pawn, BackstorySlot.Childhood, null, factionDef };
+            method.Invoke(null, arguments);
+            currentPawn.Childhood = arguments[2] as Backstory;
+            arguments = new object[] { currentPawn.Pawn, BackstorySlot.Adulthood, null, factionDef };
+            method.Invoke(null, arguments);
+            currentPawn.Adulthood = arguments[2] as Backstory;
         }
 
         // Trait-related actions.
         public void AddTrait(Trait trait) {
             state.CurrentPawn.AddTrait(trait);
         }
+
         public void UpdateTrait(int index, Trait trait) {
             state.CurrentPawn.SetTrait(index, trait);
         }
+
         public void RemoveTrait(Trait trait) {
             state.CurrentPawn.RemoveTrait(trait);
         }
+
         public void RandomizeTraits() {
-            randomizer.RandomizeTraits(state.CurrentPawn);
+            Pawn pawn = randomizer.GenerateSameKindOfPawn(state.CurrentPawn);
+            List<Trait> traits = pawn.story.traits.allTraits;
+            state.CurrentPawn.ClearTraits();
+            foreach (var trait in traits) {
+                state.CurrentPawn.AddTrait(trait);
+            }
         }
 
         // Age-related actions.
         public void UpdateBiologicalAge(int age) {
-            if (age < Constraints.AgeBiologicalMin) {
-                age = Constraints.AgeBiologicalMin;
+            int min = state.CurrentPawn.MinAge;
+            int max = state.CurrentPawn.MaxAge;
+            if (age < min) {
+                age = min;
             }
-            else if (age > Constraints.AgeBiologicalMax || age > state.CurrentPawn.ChronologicalAge) {
-                if (age > Constraints.AgeBiologicalMax) {
-                    age = Constraints.AgeBiologicalMax;
+            else if (age > max || age > state.CurrentPawn.ChronologicalAge) {
+                if (age > max) {
+                    age = max;
                 }
                 else {
                     age = state.CurrentPawn.ChronologicalAge;
@@ -97,9 +128,11 @@ namespace EdB.PrepareCarefully {
 
         // Appearance-related actions.
         public void RandomizeAppearance() {
-            randomizer.RandomizeAppearance(state.CurrentPawn);
+            CustomPawn currentPawn = state.CurrentPawn;
+            Pawn pawn = randomizer.GenerateSameKindAndGenderOfPawn(currentPawn);
+            currentPawn.CopyAppearance(pawn);
         }
-
+        
         // Skill-related actions.
         public void ResetSkills() {
             state.CurrentPawn.RestoreSkillLevelsAndPassions();
@@ -159,31 +192,44 @@ namespace EdB.PrepareCarefully {
             }));
         }
         public void AddFactionPawn(FactionDef def) {
-            var kinds = DefDatabase<PawnKindDef>.AllDefs.Where((PawnKindDef arg) => {
-                return (arg.defaultFactionType != null && arg.defaultFactionType.LabelCap == def.LabelCap);
-            });
+            var kinds = PrepareCarefully.Instance.Providers.Factions.GetPawnKindsForFactionDefLabel(def);
             PawnKindDef kindDef = kinds.RandomElementWithFallback(def.basicMemberKind);
-            Faction faction = Faction.OfPlayer;
-            if (def != Faction.OfPlayer.def) {
-                faction = new Faction() {
-                    def = def
-                };
-                FactionRelation rel = new FactionRelation();
-                rel.other = Faction.OfPlayer;
-                rel.goodwill = 50;
-                rel.hostile = false;
-                (typeof(Faction).GetField("relations", BindingFlags.Instance | BindingFlags.NonPublic)
-                    .GetValue(faction) as List<FactionRelation>).Add(rel);
+            Faction faction = PrepareCarefully.Instance.Providers.Factions.GetFaction(def);
+            // Workaround to force pawn generation to skip adding weapons to the pawn.
+            // Might be a slightly risky hack, but the finally block should guarantee that
+            // the weapons money range always gets set back to its original value.
+            // TODO: Try to remove this at a later date.  It would be nice if the pawn generation
+            // request gave you an option to skip weapon and equipment generation.
+            FloatRange savedWeaponsMoney = kindDef.weaponMoney;
+            kindDef.weaponMoney = new FloatRange(0, 0);
+            Pawn pawn = null;
+            try {
+                pawn = randomizer.GeneratePawn(new PawnGenerationRequestWrapper() {
+                    Faction = faction,
+                    KindDef = kindDef
+                }.Request);
+                if (pawn.equipment != null) {
+                    pawn.equipment.DestroyAllEquipment(DestroyMode.Vanish);
+                }
+                if (pawn.inventory != null) {
+                    pawn.inventory.DestroyAll(DestroyMode.Vanish);
+                }
             }
-            Pawn pawn = randomizer.GeneratePawn(new PawnGenerationRequestWrapper() {
-                Faction = faction,
-                KindDef = kindDef,
-                Context = PawnGenerationContext.NonPlayer
-            }.Request);
-            pawn.equipment.DestroyAllEquipment(DestroyMode.Vanish);
-            pawn.inventory.DestroyAll(DestroyMode.Vanish);
-            CustomPawn customPawn = new CustomPawn(pawn);
+            catch (Exception e) {
+                Log.Warning("Failed to create faction pawn of kind " + kindDef.defName);
+                Log.Message(e.Message);
+                Log.Message(e.StackTrace);
+                if (pawn != null) {
+                    pawn.Destroy();
+                }
+                state.AddError("EdB.PC.Panel.PawnList.Error.FactionPawnFailed".Translate());
+                return;
+            }
+            finally {
+                kindDef.weaponMoney = savedWeaponsMoney;
+            }
 
+            CustomPawn customPawn = new CustomPawn(pawn);
             customPawn.Pawn.SetFactionDirect(Faction.OfPlayer);
             PrepareCarefully.Instance.AddPawn(customPawn);
             state.CurrentPawnIndex = PrepareCarefully.Instance.Pawns.Count - 1;

@@ -56,9 +56,14 @@ namespace EdB.PrepareCarefully {
                     return p.Id == loadedPawn.Id;
                 });
                 if (idConflictPawn != null) {
-                    loadedPawn.Id = Guid.NewGuid().ToString();
+                    loadedPawn.GenerateId();
                 }
                 return loadedPawn;
+            }
+            else {
+                Messages.Message("EdB.PC.Dialog.Preset.Error.NoCharacter".Translate(), MessageSound.SeriousAlert);
+                Log.Warning("Preset was created with the following mods: " + modString);
+                return null;
             }
             if (loader.Failed) {
                 loadout.State.AddError(loader.ModString);
