@@ -10,8 +10,6 @@
 <!-- NEW: EdB.PC.Common.Default -->
 <!-- NEW: EdB.PC.Common.NoOptionAvailable -->
 <!-- NEW: EdB.PC.Dialog.Preset.Error.NoCharacter -->
-<!-- NEW: EdB.PC.Page.StartingPawnScenarioPartMessage.Plural -->
-<!-- NEW: EdB.PC.Page.StartingPawnScenarioPartMessage.Singular -->
 
 <LanguageData>
   <EdB.PC.AddParentChild.Header.AddParent>添加一個父親或母親</EdB.PC.AddParentChild.Header.AddParent>
@@ -146,8 +144,6 @@
     禁用點數限制來進行無限制的開局準備。
   </EdB.PC.Page.Points.UsePoints.Tip>
   <EdB.PC.Page.Title>精心準備</EdB.PC.Page.Title>
-  <EdB.PC.Page.StartingPawnScenarioPartMessage.Plural>使用{0}位精心準備角色開始。</EdB.PC.Page.StartingPawnScenarioPartMessage.Plural>
-  <EdB.PC.Page.StartingPawnScenarioPartMessage.Singular>使用1位精心準備角色開始。</EdB.PC.Page.StartingPawnScenarioPartMessage.Singular>
 
   <EdB.PC.Panel.Age.Biological>生理年齡</EdB.PC.Panel.Age.Biological>
   <EdB.PC.Panel.Age.Chronological>實際年齡</EdB.PC.Panel.Age.Chronological>
@@ -159,10 +155,6 @@
   <EdB.PC.Panel.AvailableEquipment.Add>添加物資</EdB.PC.Panel.AvailableEquipment.Add>
   <EdB.PC.Panel.AvailableEquipment.Materials.All>全部金屬</EdB.PC.Panel.AvailableEquipment.Materials.All>
   <EdB.PC.Panel.AvailableEquipment.Materials.None>無金屬</EdB.PC.Panel.AvailableEquipment.Materials.None>
-
-  <EdB.PC.Panel.Backstory.Title>背景故事</EdB.PC.Panel.Backstory.Title>
-  <EdB.PC.Panel.Backstory.Childhood>童年</EdB.PC.Panel.Backstory.Childhood>
-  <EdB.PC.Panel.Backstory.Adulthood>成年</EdB.PC.Panel.Backstory.Adulthood>
 
   <EdB.PC.Panel.Health.Error.MustSelectBodyPart>你必須選擇一個位置</EdB.PC.Panel.Health.Error.MustSelectBodyPart>
   <EdB.PC.Panel.Health.Error.MustSelectImplant>你必須選擇一個植入物</EdB.PC.Panel.Health.Error.MustSelectImplant>
@@ -176,10 +168,8 @@
   <EdB.PC.Panel.Health.SelectImplant>選擇一個植入物</EdB.PC.Panel.Health.SelectImplant>
   <EdB.PC.Panel.Health.SelectBodyPart>選擇一個位置</EdB.PC.Panel.Health.SelectBodyPart>
   <EdB.PC.Panel.Health.SelectSeverity>選擇一個嚴重等級</EdB.PC.Panel.Health.SelectSeverity>
-  <EdB.PC.Panel.Health.Title>健康</EdB.PC.Panel.Health.Title>
 
   <EdB.PC.Panel.Incapable.None>無</EdB.PC.Panel.Incapable.None>
-  <EdB.PC.Panel.Incapable.Title>無法從事</EdB.PC.Panel.Incapable.Title>
   <EdB.PC.Panel.Incapable.Warning>所有的角色都無法從事以下的工作，這些工作在原版遊戲裡是很有必要的。
 
 {0}
@@ -201,18 +191,15 @@
 
   <EdB.PC.Panel.SelectedEquipment.Remove>移除物資</EdB.PC.Panel.SelectedEquipment.Remove>
 
-  <EdB.PC.Panel.Skills.Title>技能</EdB.PC.Panel.Skills.Title>
   <EdB.PC.Panel.Skills.ResetTip>將所有技能和熱情重置為初始值。</EdB.PC.Panel.Skills.ResetTip>
   <EdB.PC.Panel.Skills.ClearTip>將所有技能和熱情設置為最低等級。</EdB.PC.Panel.Skills.ClearTip>
 
   <EdB.PC.Panel.Traits.None>沒有特性</EdB.PC.Panel.Traits.None>
-  <EdB.PC.Panel.Traits.Title>特性</EdB.PC.Panel.Traits.Title>
   <EdB.PC.Panel.Traits.Warning.TooManyTraits>一般來說，三個特徵是每個角色的最大允許值。您可以在這裡添加更多，但是這些特性可能在遊戲中所有的角色信息面板中沒有正確顯示。</EdB.PC.Panel.Traits.Warning.TooManyTraits>
 
   <EdB.PC.TabView.Animals.Title>動物</EdB.PC.TabView.Animals.Title>
   <EdB.PC.TabView.Equipment.Title>物資</EdB.PC.TabView.Equipment.Title>
   <EdB.PC.TabView.Pawns.Title>角色</EdB.PC.TabView.Pawns.Title>
   <EdB.PC.TabView.Relationships.Title>關係</EdB.PC.TabView.Relationships.Title>
-
 
 </LanguageData>
