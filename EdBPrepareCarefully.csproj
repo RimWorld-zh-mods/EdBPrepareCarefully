@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>EdB.PrepareCarefully</RootNamespace>
     <AssemblyName>EdBPrepareCarefully</AssemblyName>
-    <ReleaseVersion>0.17.1.5</ReleaseVersion>
+    <ReleaseVersion>0.17.1.6</ReleaseVersion>
     <UseMSBuildEngine>False</UseMSBuildEngine>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -30,6 +30,9 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>Libraries\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +58,7 @@
     <Compile Include="Source\CostCalculator.cs" />
     <Compile Include="Source\CustomParentChildGroup.cs" />
     <Compile Include="Source\CustomParentChildPawn.cs" />
+    <Compile Include="Source\DialogManageImplants.cs" />
     <Compile Include="Source\DialogSelectPawn.cs" />
     <Compile Include="Source\DialogSelectParentChildPawn.cs" />
     <Compile Include="Source\Dialog_Colonist.cs" />
@@ -76,9 +80,9 @@
     <Compile Include="Source\IRelationshipWorker.cs" />
     <Compile Include="Source\OptionsApparel.cs" />
     <Compile Include="Source\OptionsHealth.cs" />
-    <Compile Include="Source\Page_ConfigureStartingPawns.cs" />
     <Compile Include="Source\PanelRelationshipsOther.cs" />
     <Compile Include="Source\PanelRelationshipsParentChild.cs" />
+    <Compile Include="Source\HarmonyPatches.cs" />
     <Compile Include="Source\PawnGenerationRequestWrapper.cs" />
     <Compile Include="Source\PawnLayers.cs" />
     <Compile Include="Source\PrepareCarefully.cs" />
