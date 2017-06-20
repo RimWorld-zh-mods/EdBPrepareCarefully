@@ -1,15 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- CHANGE NOTES -->
-<!-- v0.17.1.3 -->
-<!-- NEW: EdB.PC.Dialog.Preset.Error.EquipmentFailed -->
-<!-- NEW: EdB.PC.Dialog.Preset.Error.PartialSaveFailure -->
-<!-- NEW: EdB.PC.Dialog.Preset.Error.SaveFailed -->
-<!-- UPDATED: EdB.PC.Panel.RelationshipsParentChild.Title -->
+<!-- v0.17.1.6 -->
+<!-- NEW: EdB.PC.Dialog.Implant.Alert -->
+<!-- NEW: EdB.PC.Dialog.Implant.Alert.Item -->
+<!-- NEW: EdB.PC.Dialog.Implant.Button.Confirm -->
+<!-- NEW: EdB.PC.Dialog.Implant.Conflict -->
+<!-- NEW: EdB.PC.Panel.Traits.Tip.Conflict -->
+<!-- NEW: EdB.PC.Panel.Traits.Tip.Conflict.List.1 -->
+<!-- NEW: EdB.PC.Panel.Traits.Tip.Conflict.List.2 -->
+<!-- NEW: EdB.PC.Panel.Traits.Tip.Conflict.List.Many -->
+<!-- NEW: EdB.PC.Panel.Traits.Tip.Conflict.List.Last -->
+<!-- UPDATED: EdB.PC.Dialog.Implant.Header -->
+<!-- UPDATED: EdB.PC.Panel.Health.HediffTypeImplant -->
+<!-- REMOVED: EdB.PC.Dialog.Implant.Error.Required -->
+<!-- REMOVED: EdB.PC.Panel.Health.SelectImplant -->
 
 <!-- v0.17.1.4 -->
 <!-- NEW: EdB.PC.Common.Default -->
 <!-- NEW: EdB.PC.Common.NoOptionAvailable -->
 <!-- NEW: EdB.PC.Dialog.Preset.Error.NoCharacter -->
+
+<!-- v0.17.1.3 -->
+<!-- NEW: EdB.PC.Dialog.Preset.Error.EquipmentFailed -->
+<!-- NEW: EdB.PC.Dialog.Preset.Error.PartialSaveFailure -->
+<!-- NEW: EdB.PC.Dialog.Preset.Error.SaveFailed -->
+<!-- UPDATED: EdB.PC.Panel.RelationshipsParentChild.Title -->
 
 <LanguageData>
   <EdB.PC.AddParentChild.Header.AddParent>添加一個父親或母親</EdB.PC.AddParentChild.Header.AddParent>
@@ -45,8 +60,11 @@
   <EdB.PC.Dialog.BodyPart.Header>選擇位置</EdB.PC.Dialog.BodyPart.Header>
   <EdB.PC.Dialog.BodyPart.Error.Required>你必須選擇一個位置</EdB.PC.Dialog.BodyPart.Error.Required>
 
-  <EdB.PC.Dialog.Implant.Header>選擇一個植入物</EdB.PC.Dialog.Implant.Header>
-  <EdB.PC.Dialog.Implant.Error.Required>你必須選擇一個植入物</EdB.PC.Dialog.Implant.Error.Required>
+  <EdB.PC.Dialog.Implant.Alert>你所選擇的植入物至少有一個無法安裝，因為與所選擇的另一個衝突：\n{0}</EdB.PC.Dialog.Implant.Alert>
+  <EdB.PC.Dialog.Implant.Alert.Item>- {0}，{1}</EdB.PC.Dialog.Implant.Alert.Item>
+  <EdB.PC.Dialog.Implant.Button.Confirm>應用</EdB.PC.Dialog.Implant.Button.Confirm>
+  <EdB.PC.Dialog.Implant.Conflict>此植入物不會被安裝，因為有以下衝突：\n\n- {0}，{1}</EdB.PC.Dialog.Implant.Conflict>
+  <EdB.PC.Dialog.Implant.Header>選擇一個植入物或仿生體</EdB.PC.Dialog.Implant.Header>
 
   <EdB.PC.Dialog.Injury.Header>選擇一個狀態</EdB.PC.Dialog.Injury.Header>
   <EdB.PC.Dialog.Injury.Error.Required>你必須選擇一個狀態</EdB.PC.Dialog.Injury.Error.Required>
@@ -161,11 +179,10 @@
   <EdB.PC.Panel.Health.Error.MustSelectOption>你必須選擇一個選項</EdB.PC.Panel.Health.Error.MustSelectOption>
   <EdB.PC.Panel.Health.Error.MustSelectSeverity>你必須選擇一個嚴重等級</EdB.PC.Panel.Health.Error.MustSelectSeverity>
   <EdB.PC.Panel.Health.HediffTypeInjury>添加一個傷痕或者健康狀態</EdB.PC.Panel.Health.HediffTypeInjury>
-  <EdB.PC.Panel.Health.HediffTypeImplant>添加一個植入物</EdB.PC.Panel.Health.HediffTypeImplant>
+  <EdB.PC.Panel.Health.HediffTypeImplant>管理植入物或仿生體</EdB.PC.Panel.Health.HediffTypeImplant>
   <EdB.PC.Panel.Health.InjuryLabel.Stage>{0}，{1}</EdB.PC.Panel.Health.InjuryLabel.Stage>
   <EdB.PC.Panel.Health.InjuryLabel.Severity>{0}</EdB.PC.Panel.Health.InjuryLabel.Severity>
   <EdB.PC.Panel.Health.None>沒有傷痕，健康狀態或者植入物。</EdB.PC.Panel.Health.None>
-  <EdB.PC.Panel.Health.SelectImplant>選擇一個植入物</EdB.PC.Panel.Health.SelectImplant>
   <EdB.PC.Panel.Health.SelectBodyPart>選擇一個位置</EdB.PC.Panel.Health.SelectBodyPart>
   <EdB.PC.Panel.Health.SelectSeverity>選擇一個嚴重等級</EdB.PC.Panel.Health.SelectSeverity>
 
@@ -196,10 +213,16 @@
 
   <EdB.PC.Panel.Traits.None>沒有特性</EdB.PC.Panel.Traits.None>
   <EdB.PC.Panel.Traits.Warning.TooManyTraits>一般來說，三個特徵是每個角色的最大允許值。您可以在這裡添加更多，但是這些特性可能在遊戲中所有的角色信息面板中沒有正確顯示。</EdB.PC.Panel.Traits.Warning.TooManyTraits>
+  <EdB.PC.Panel.Traits.Tip.Conflict>{0}\n\n衝突：\n{1}</EdB.PC.Panel.Traits.Tip.Conflict>
+  <EdB.PC.Panel.Traits.Tip.Conflict.List.1> - {0}</EdB.PC.Panel.Traits.Tip.Conflict.List.1>
+  <EdB.PC.Panel.Traits.Tip.Conflict.List.2> - {0}\n - {1}</EdB.PC.Panel.Traits.Tip.Conflict.List.2>
+  <EdB.PC.Panel.Traits.Tip.Conflict.List.Many> - {0}\n{1}</EdB.PC.Panel.Traits.Tip.Conflict.List.Many>
+  <EdB.PC.Panel.Traits.Tip.Conflict.List.Last> - {0}\n - {1}</EdB.PC.Panel.Traits.Tip.Conflict.List.Last>
 
   <EdB.PC.TabView.Animals.Title>動物</EdB.PC.TabView.Animals.Title>
   <EdB.PC.TabView.Equipment.Title>物資</EdB.PC.TabView.Equipment.Title>
   <EdB.PC.TabView.Pawns.Title>角色</EdB.PC.TabView.Pawns.Title>
   <EdB.PC.TabView.Relationships.Title>關係</EdB.PC.TabView.Relationships.Title>
+
 
 </LanguageData>
